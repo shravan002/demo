@@ -8,6 +8,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UserResponse {
+    /**
+     * Purpose of this class is to a return the response to the user
+     */
     private String id;
     private String firstName;
     private String lastName;

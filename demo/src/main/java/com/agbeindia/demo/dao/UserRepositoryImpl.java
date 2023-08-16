@@ -16,6 +16,11 @@ public class UserRepositoryImpl implements UserRepository {
         userList = new ArrayList<>();
     }
 
+    /**
+     * Saving the users in a list
+     * @param newUser
+     * @return
+     */
     public UserResponse save(User newUser) {
 
         UserResponse userResponse = new UserResponse();
