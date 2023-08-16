@@ -27,7 +27,8 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.getUsers();
         for (User user : userList) {
             if (user.getUserName().equals(newUser.getUserName()))
-                throw new UserAlreadyExistsException("A user with the given username already exists");
+                throw new UserAlreadyExistsException("USER_ALREADY_EXISTS",
+                        new Throwable("A user with the given username already exists"));
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         newUser.setHashedPassword(bCryptPasswordEncoder.encode(newUser.getPlainTextPassword()));
