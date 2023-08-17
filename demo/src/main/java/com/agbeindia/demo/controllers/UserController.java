@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private final String CODE = "CODE";
+    private final String USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS";
+    private final String DESCRIPTION_KEY = "description";
+    private final String DESCRIPTION = "A user with the given username already exists";
+
     @PostMapping("/register")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
         try {
@@ -28,8 +33,8 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).body(createdUser);
         } catch (Exception e) {
             Map<String, String> response = new HashMap<>();
-            response.put("code", "USER_ALREADY_EXISTS");
-            response.put("description", "A user with the given username already exists");
+            response.put(CODE, USER_ALREADY_EXISTS);
+            response.put(DESCRIPTION_KEY, DESCRIPTION);
 
             return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         }
